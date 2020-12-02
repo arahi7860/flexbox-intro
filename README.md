@@ -1,13 +1,14 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  SOFTWARE ENGINEERING IMMERSIVE
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SOFTWARE ENGINEERING IMMERSIVE
 
 # Flexbox
 
 ### Learning Objectives
-- Define the flexible box module (flexbox!)
-- Give an example of a problem solved by flexbox
-- Contrast flex containers and flex items
-- Describe the difference between the main axis and the cross axis
-- Use flexbox to solve common design problems without using hacks
+
+-   Define the flexible box module (flexbox!)
+-   Give an example of a problem solved by flexbox
+-   Contrast flex containers and flex items
+-   Describe the difference between the main axis and the cross axis
+-   Use flexbox to solve common design problems without using hacks
 
 # Intro to flexbox!
 
@@ -19,26 +20,26 @@ Flexbox is short for "The CSS3 Flexible Box Module". From [MDN](https://develope
 
 ### Flex context vs block context
 
-- Up to this point we've been working with the block context -- `display: block;`. This means that in order to position things, we needed to float them, use clearfix, etc.
-- Flexbox introduces a new context: `display: flex;`.
-- Elements with `display: flex;` have, largely, an external block context -- they exist in the document flow like any other kind of element.
-- Internally, they create a new type of context that has its own properties.
+-   Up to this point we've been working with the block context -- `display: block;`. This means that in order to position things, we needed to float them, use clearfix, etc.
+-   Flexbox introduces a new context: `display: flex;`.
+-   Elements with `display: flex;` have, largely, an external block context -- they exist in the document flow like any other kind of element.
+-   Internally, they create a new type of context that has its own properties.
 
 ## Flex containers and flex items
 
 ### A flex _container_ is an element that creates a flex context.
 
-#### Follow along in ✨ [this codepen!](https://codepen.io/brunopgalvao/pen/gEPBEz) ✨
+#### Follow along in the ✨ code-along ✨ folder in this repo
 
-From the [W3 Specification](https://www.w3.org/TR/css-flexbox-1/#flex-containers): 
+From the [W3 Specification](https://www.w3.org/TR/css-flexbox-1/#flex-containers):
 
 > A flex container establishes a new flex formatting context for its contents. This is the same as establishing a block formatting context, except that flex layout is used instead of block layout. For example, floats do not intrude into the flex container ... Flex containers form a containing block for their contents exactly like block containers do.
 
 The flex context works a little differently from the ordinary block context that is the default of the document flow. A number of properties are different or do not apply.
 
-- `float` and `clear` don't have any effect on flex items
-- `vertical-align` has no effect on a flex item
-- Some pseudoelements, like `::first-line` and `::first-letter`, don't apply to flex containers.
+-   `float` and `clear` don't have any effect on flex items
+-   `vertical-align` has no effect on a flex item
+-   Some pseudoelements, like `::first-line` and `::first-letter`, don't apply to flex containers.
 
 ### A flex _item_ is an element that exists within a flex context.
 
@@ -85,7 +86,7 @@ A lot of the power in flexbox comes from the ability to switch which axis is whi
 
 <dl>
   <dt><code>order</code></dt>
-  <dd>The order in which you want flex items to appear along the main access. The default is 0. Negative numbers are allowed.</dd>
+  <dd>The order in which you want flex items to appear along the main axis. The default is 0. Negative numbers are allowed.</dd>
   
   <dt><code>flex-grow</code></dt>
   <dd>Defines the proportion of the space in the container that the flex item will take up. For ex, if all flex items in a flex container have a <code>flex-grow</code> property of 1, they will all take up equal width. If one of the children has <code>flex-grow: 2;</code>, it will be twice as wide as the others.</dd>
@@ -109,7 +110,7 @@ For this lab, you'll be getting more acquainted with the flex properties, and ap
 
 # Why use flexbox?
 
-As you may have noticed, ***flexbox is literally magic***. Problems that take hours of messing with floats, positions, and so on, are solved in minutes. And responsiveness is a dream -- just change the `flex-direction` between mobile and desktop and you're all set.
+As you may have noticed, **_flexbox is literally magic_**. Problems that take hours of messing with floats, positions, and so on, are solved in minutes. And responsiveness is a dream -- just change the `flex-direction` between mobile and desktop and you're all set.
 
 There are a number of classic web design problems that once took odd CSS hacks and patches to fix, but are now a breeze with flexbox. Let's walk through one of them together.
 
@@ -135,13 +136,13 @@ We're going to be working from this HTML:
 
 ```html
 <body>
-  <header>Header</header>
-  <main>
-    <article>Content</article>
-    <aside class='left'>Left sidebar</aside>
-    <aside class='right'>Right sidebar</aside>
-  </main>
-  <footer>Footer</footer>
+    <header>Header</header>
+    <main>
+        <article>Content</article>
+        <aside class="left">Left sidebar</aside>
+        <aside class="right">Right sidebar</aside>
+    </main>
+    <footer>Footer</footer>
 </body>
 ```
 
@@ -150,51 +151,53 @@ We're going to be working from this HTML:
 
 ```css
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header, footer {
-  flex: 0 150px;
+header,
+footer {
+    flex: 0 150px;
 }
 
 main {
-  flex: 1;
-  display: flex;
+    flex: 1;
+    display: flex;
 }
 
 article {
-  order: 2;
-  flex: 3;
+    order: 2;
+    flex: 3;
 }
 
 aside {
-  flex: 0 300px;
+    flex: 0 300px;
 }
 
 .left {
-  order: 1;
+    order: 1;
 }
 
 .right {
-  order: 3;
+    order: 3;
 }
 
 @media screen and (max-width: 1025px) {
-  main {
-    flex-direction: column;
-  }
+    main {
+        flex-direction: column;
+    }
 
-  article {
-    order: 0;
-  }
+    article {
+        order: 0;
+    }
 
-  aside {
-    flex: 0;
-  }
+    aside {
+        flex: 0;
+    }
 }
 ```
+
 </details>
 
 ## 🚀 Practice practice practice!
@@ -205,95 +208,95 @@ In the `flexbox-lab` directory of this repo, you'll find an `index.html` and a `
 
 There's a little bit of starter CSS provided.
 
-Here's the lab solutions for each step. If you get stuck, feel free to walk through each property one at a time and see how the page changes! 
+Here's the lab solutions for each step. If you get stuck, feel free to walk through each property one at a time and see how the page changes!
 
 <details>
   <summary>Body</summary>
 
-  ```css
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-  ```
+```css
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+```
 
 </details>
 
 <details>
   <summary>Header and nav</summary>
 
-  ```css
+```css
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    flex: 0 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 1025px) {
     header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    nav ul {
         display: flex;
-        flex-direction: column;
     }
-
-    .logo {
-        flex: 0 150px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    @media screen and (min-width: 1025px) {
-        header {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        nav ul {
-            display: flex;
-        }
-    }
-  ```
+}
+```
 
 </details>
 
 <details>
   <summary>Main, aside, content section, article</summary>
 
-  ```css
-    main, article {
+```css
+main,
+article {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 2;
+}
+
+@media screen and (min-width: 1025px) {
+    main {
+        flex-direction: row;
+    }
+
+    aside {
         flex: 1;
-        display: flex;
-        flex-direction: column;
     }
 
-    .content {
-        flex: 2;
+    article {
+        flex: 3;
     }
-
-    @media screen and (min-width: 1025px) {
-
-        main {
-            flex-direction: row;
-        }
-
-        aside {
-            flex: 1;
-        }
-
-        article {
-            flex: 3;
-        }
-    }
-  ```
+}
+```
 
 </details>
 
 <details>
   <summary>Feature</summary>
 
-  ```css
-    .feature {
-        flex: 1;
-        display: flex;
-    }
+```css
+.feature {
+    flex: 1;
+    display: flex;
+}
 
-    .col {
-        flex: 1;
-    }
-  ```
+.col {
+    flex: 1;
+}
+```
 
 </details>
